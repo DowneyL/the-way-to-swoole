@@ -18,8 +18,8 @@ class Client
         fwrite(STDOUT, "input message:");
         $message = trim(fgets(STDIN));
         $this->client->send($message);
-        $receiveMsg = $this->client->recv();
-        echo "Get message from server : {$receiveMsg}" . PHP_EOL;
+//        $receiveMsg = $this->client->recv();
+//        echo "Get message from server : {$receiveMsg}" . PHP_EOL;
     }
 }
 
