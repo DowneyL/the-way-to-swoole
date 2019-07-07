@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>swoole</title>
+</head>
+<body>
+<h3>Swoole WebSocket</h3>
+</body>
+<script>
+    var wsUrl = "ws://127.0.0.1:9091?name=hengli";
+    var ws = new WebSocket(wsUrl);
+    ws.onopen = function () {
+        console.log("ws open");
+        ws.send("Hello, WebSocket");
+    };
+    ws.onmessage = function (evt) {
+        var receive_data = evt.data;
+        console.log(receive_data);
+    };
+    ws.onclose = function () {
+        console.log("ws close");
+    }
+</script>
+</html>
