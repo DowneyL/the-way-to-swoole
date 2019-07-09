@@ -20,6 +20,11 @@ $server->on("finish", function (swoole_http_server $server, int $taskId, string 
 });
 
 $server->on("request", function (swoole_http_request $request, swoole_http_response $response) use ($server) {
+    $uri = $request->server['request_uri'];
+    if ($uri == '/favicon.ico') {
+        $response->status(404);
+        $response->end();
+    }
     $response->detach();
     $server->task(['fd' => $response->fd, 'data' => 'do something']);
 });
