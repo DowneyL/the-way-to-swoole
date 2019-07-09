@@ -2,6 +2,13 @@
 // 创建 server 对象， 监听 0.0.0.0:8080 端口
 $server = new swoole_server("0.0.0.0", 8080);
 
+
+// 5 秒侦测一次心跳，如果有链连接 10s 都没向服务器发送数据，就主动断开连接
+$server->set([
+    'heartbeat_check_interval' => 5,
+    'heartbeat_idle_time' => 10,
+]);
+
 // 监听连接事件
 /**
  * 回调函数
