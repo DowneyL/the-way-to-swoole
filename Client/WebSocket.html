@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>web socket</title>
+</head>
+<body>
+
+</body>
+<script>
+    var wsUri = "ws://127.0.0.1:8080";
+    var client = new WebSocket(wsUri);
+    client.onopen = function (event) {
+        console.log("connected");
+        client.send("hello web socket");
+    };
+
+    client.onmessage = function (event) {
+        console.log(event.data);
+    };
+
+    client.onclose = function (event) {
+        console.log("disconnected");
+    };
+
+    client.onerror = function (event) {
+        console.log(event.data)
+    };
+</script>
+</html>
